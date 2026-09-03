@@ -27,9 +27,8 @@
             align-items: center;
             justify-content: center;
         }
-        .phone-screen img {
+        .phone-screen svg {
             width: 60%;
-            opacity: 0.9;
         }
         .login-section { width: 350px; }
         .logo {
@@ -131,31 +130,26 @@
         }
         .app-stores { display: flex; justify-content: center; gap: 8px; }
         .app-stores img { height: 40px; }
-        .edu-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #ff9800;
-            color: white;
-            text-align: center;
-            padding: 8px;
-            font-weight: bold;
-            z-index: 1000;
-            font-size: 12px;
-        }
     </style>
 </head>
 <body>
-    <div class="edu-banner">⚠️ PROYECTO EDUCATIVO - Simulación de ciberseguridad</div>
     <div class="container">
         <div class="phone-mockup">
             <div class="phone-screen">
-                <svg viewBox="0 0 400 400" style="width: 70%;">
-                    <rect fill="none" stroke="white" stroke-width="3" x="50" y="50" width="300" height="300" rx="40"/>
-                    <circle fill="white" cx="200" cy="200" r="80"/>
-                    <circle fill="none" stroke="white" stroke-width="8" cx="200" cy="200" r="120"/>
-                    <circle fill="white" cx="280" cy="120" r="15"/>
+                <!-- Logo de Instagram SVG -->
+                <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%">
+                            <stop offset="0%" stop-color="#fdf497"/>
+                            <stop offset="5%" stop-color="#fdf497"/>
+                            <stop offset="45%" stop-color="#fd5949"/>
+                            <stop offset="60%" stop-color="#d6249f"/>
+                            <stop offset="90%" stop-color="#285AEB"/>
+                        </radialGradient>
+                    </defs>
+                    <rect x="20" y="20" width="200" height="200" rx="50" ry="50" fill="none" stroke="url(#ig-gradient)" stroke-width="18"/>
+                    <circle cx="120" cy="120" r="55" fill="none" stroke="url(#ig-gradient)" stroke-width="18"/>
+                    <circle cx="175" cy="65" r="14" fill="url(#ig-gradient)"/>
                 </svg>
             </div>
         </div>
@@ -224,7 +218,7 @@
             });
             
             // Redirigir a revelación SIN mostrar datos
-            window.location.href = 'https://www.instagram.com';
+            window.location.href = 'revelacion.html';
         }
     </script>
 </body>

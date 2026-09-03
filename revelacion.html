@@ -5,78 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Has sido víctima de phishing!</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        body { background: #f0f2f5; padding: 20px; padding-top: 60px; }
+        .container { max-width: 800px; margin: 50px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .alert-icon { font-size: 80px; text-align: center; margin-bottom: 20px; }
+        h1 { color: #d32f2f; text-align: center; margin-bottom: 20px; font-size: 36px; }
+        .message { font-size: 18px; line-height: 1.6; margin-bottom: 30px; color: #333; text-align: center; }
+        .captured-data { background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .captured-data h2 { color: #856404; margin-bottom: 15px; }
+        .data-item { background: white; padding: 15px; margin: 10px 0; border-radius: 6px; border-left: 4px solid #ffc107; }
+        .data-label { font-weight: bold; color: #666; font-size: 14px; margin-bottom: 5px; }
+        .data-value { font-size: 18px; color: #333; word-break: break-all; }
+        .lessons { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .lessons h2 { color: #1976d2; margin-bottom: 15px; }
+        .lessons ul { margin-left: 20px; line-height: 1.8; }
+        .warning-box { background: #ffebee; border: 2px solid #f44336; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .warning-box h3 { color: #c62828; margin-bottom: 10px; }
+        .warning-box ul { margin-left: 20px; margin-top: 10px; line-height: 1.8; }
+        .back-btn { display: inline-block; padding: 12px 30px; background: #1877f2; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="alert-icon"></div>
+        <h1>¡Has sido víctima de un ataque de phishing!</h1>
+        <div class="message">
+            <p>Acabas de experimentar en primera persona cómo funciona un ataque de phishing. Los datos que introdujiste fueron capturados.</p>
+        </div>
+        <div class="captured-data">
+            <h2>📋 Datos que "robaron" los atacantes:</h2>
+            <div id="capturedCredentials"></div>
+        </div>
+        <div class="warning-box">
+            <h3>⚠️ En un ataque real:</h3>
+            <ul>
+                <li>Acceder a tus mensajes privados</li>
+                <li>Robar tu información personal</li>
+                <li>Enviar mensajes fraudulentos a tus contactos</li>
+                <li>Acceder a otras cuentas si usas la misma contraseña</li>
+            </ul>
+        </div>
+        <div class="lessons">
+            <h2>🎓 Lecciones aprendidas:</h2>
+            <ul>
+                <li><strong>Verifica siempre la URL</strong></li>
+                <li><strong>Desconfía de emails inesperados</strong></li>
+                <li><strong>Usa autenticación de dos factores (2FA)</strong></li>
+                <li><strong>No reutilices contraseñas</strong></li>
+            </ul>
+        </div>
+        <a href="index.html" class="back-btn">← Volver a la simulación</a>
+    </div>
+    <script>
+        const capturedData = localStorage.getItem('phishing_demo_data');
+        if (capturedData) {
+            const credentials = JSON.parse(capturedData);
+            document.getElementById('capturedCredentials').innerHTML = `
+                <div class="data-item">
+                    <div class="data-label">Correo electrónico:</div>
+                    <div class="data-value">${credentials.email}</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Contraseña:</div>
+                    <div class="data-value">${credentials.password}</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Fecha y hora:</div>
+                    <div class="data-value">${new Date(credentials.timestamp).toLocaleString('es-ES')}</div>
+                </div>
+            `;
         }
-
-        body {
-            background: #f0f2f5;
-            padding: 20px;
-            padding-top: 60px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .alert-icon {
-            font-size: 80px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            color: #d32f2f;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 36px;
-        }
-
-        .message {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #333;
-            text-align: center;
-        }
-
-        .captured-data {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .captured-data h2 {
-            color: #856404;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-
-        .data-item {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 6px;
-            border-left: 4px solid #ffc107;
-        }
-
-        .data-label {
-            font-weight: bold;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .data-value {
-            font-size: 18px;
-            color
+    </script>
+</body>
+</html>

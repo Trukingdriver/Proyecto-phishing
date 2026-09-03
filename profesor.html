@@ -12,53 +12,45 @@
         .subtitle { color: #666; margin-bottom: 30px; }
         .info-box { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 20px; margin-bottom: 30px; border-radius: 8px; }
         .info-box h3 { color: #1976d2; margin-bottom: 10px; }
-        .info-box code { background: white; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        .stat-number { font-size: 36px; font-weight: bold; margin-bottom: 5px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background: #f8f9fa; font-weight: 600; }
-        tr:hover { background: #f8f9fa; }
-        .btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; margin-right: 10px; }
-        .btn-primary { background: #1877f2; color: white; }
-        .btn-danger { background: #dc3545; color: white; }
+        .info-box ul { margin-left: 20px; line-height: 1.8; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>📊 Panel del Profesor</h1>
-        <p class="subtitle">Instrucciones para ver los datos</p>
+        <p class="subtitle">Datos capturados durante la simulación</p>
         
         <div class="info-box">
-            <h3>📋 Cómo ver los datos capturados:</h3>
-            <p><strong>Opción 1 (Recomendada):</strong> Pide a cada alumno que te muestre su pantalla al final de la simulación. Verán sus datos en la página de revelación.</p>
-            <p style="margin-top: 10px;"><strong>Opción 2:</strong> Abre la consola del navegador (F12) en la página del alumno y escribe:</p>
-            <code style="display: block; margin: 10px 0; padding: 10px; background: white;">JSON.parse(localStorage.getItem("all_phishing_data"))</code>
+            <h3>📧 Cómo ver los datos capturados:</h3>
+            <ul>
+                <li>Los datos se envían automáticamente a tu email cuando un alumno completa el formulario</li>
+                <li>Revisa tu bandeja de entrada (y spam) buscando emails con asunto: "🚨 Phishing - Datos capturados"</li>
+                <li>Cada email contiene: email del alumno, contraseña y fecha/hora</li>
+            </ul>
         </div>
 
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number">N/A</div>
-                <div class="stat-label">Esta versión no usa base de datos compartida</div>
-            </div>
+        <div class="info-box" style="background: #fff3cd; border-left-color: #ffc107;">
+            <h3 style="color: #856404;">⚙️ Configuración:</h3>
+            <p>Para activar el envío de emails:</p>
+            <ol style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                <li>Edita el archivo <code>index.html</code></li>
+                <li>Busca: <code>TU_EMAIL_AQUI</code></li>
+                <li>Reemplázalo por tu email real (ej: profesor@gmail.com)</li>
+                <li>Guarda los cambios en GitHub</li>
+                <li>La primera vez que alguien envíe el formulario, recibirás un email de confirmación de FormSubmit</li>
+                <li>Haz clic en el enlace de confirmación y listo</li>
+            </ol>
         </div>
 
-        <h2>✅ Ventajas de esta versión:</h2>
-        <ul style="margin: 20px 0; line-height: 2;">
-            <li>No depende de servicios externos (siempre funciona)</li>
-            <li>Más rápida y sencilla</li>
-            <li>Los alumnos ven sus datos inmediatamente</li>
-            <li>Ideal para demostraciones en clase</li>
-        </ul>
-
-        <h2> Dinámica recomendada:</h2>
-        <ol style="margin: 20px 0; line-height: 2;">
-            <li>Envía los emails de phishing a los alumnos</li>
-            <li>Cuando "piquen", verán la página de revelación con SUS datos</li>
-            <li>Al final de la clase, proyecta la página y pide a los alumnos que te digan qué datos introdujeron</li>
-            <li>Reflexiona con el grupo sobre las señales de alerta</li>
-        </ol>
+        <div class="info-box" style="background: #e8f5e9; border-left-color: #4caf50;">
+            <h3 style="color: #2e7d32;">✅ Ventajas:</h3>
+            <ul>
+                <li>Los alumnos NO ven sus datos capturados</li>
+                <li>Tú recibes todos los datos por email</li>
+                <li>No requiere base de datos externa</li>
+                <li>Funciona 100% sin fallos</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>

